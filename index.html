@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel | Nearest Dukan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+ <style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+     *{
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing:border-box;
+        scroll-padding-top:2rem;
+        scroll-behaviour:smooth;
+        list-style:none;
+        text-decoration:none;
+
+     }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    :root{
+        --main-color:#fe5b3d;
+        --second-color:#ffac38;
+        --text-color:#444;
+        --gradient:linear-gradient(#f35b3d,#ffac38);    
+    }
+
+    /*--------------Custom Scroll Bar------------------*/
+
+    html::webkit-scrollbar{
+        width:0.5rem;
+    }
+    html::webkit-scrollbar-track{
+        background:transparent;
+    }
+    html::webkit-scrollbar-thumb{
+        background:var(--main-color);
+        border-rdaius:5rem;
+    }
+    section{
+        padding: 50px 100px;
+    }
+
+    .scroll-up-btn {
+    position: fixed;
+    height: 45px;
+    width: 42px;
+    background: crimson;
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    z-index: 9999;
+    font-size: 30px;
+    border-radius: 6px;
+    border-bottom-width: 2px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-up-btn.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-up-btn:hover {
+    filter: brightness(90%);
+}
+
+
+    header{
+        postion:fixed;
+        width:100%;
+        color:whitesmoke
+        top:0;
+        right:0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background:lightgrey;
+        padding:15px 100px;
+    }
+
+    header .logo span{color:crimson;}
+
+    .logo{
+        width:50px;
+        font-size:25px;
+        color:#fff;
+    }
+
+    .navbar{
+        display: flex;
+    }
+
+    .navbar li{
+        position: relative;
+    } 
+
+    .navbar a{
+        color:black;
+        font-size:1rem;
+        padding:10px 20px;
+        font-weight:500;
+    }
+
+    .navbar a::after{
+        content:'';
+        width:0;
+        height:3px;
+        background:var(--gradient);
+        position:absolute;
+        bottom:-4px;
+        left:0;
+        transition:0.5s;
+    }
+
+    .navbar a:hover::after{
+        width:100%;
+    }
+    #menu-icon{
+        font-size:24px;
+        cursor:pointer;
+        z-index:10001;
+        display: none;
+    }
+
+    .header-btn a{
+        padding:10px 20px;
+        color:var(--text-color);
+        font-weight:500;
+    }
+
+
+    .header-btn .sign-up{
+        color:crimson;
+    }
+
+    .header-btn .sign-in{
+        background:#474fa0;
+        color:white;
+        border-radius:0.3rem;
+        transition:0.5s ease;
+    }
+
+    .header-btn .sign-in:hover{
+        background:var(--main-color);
+    }
+
+    header{
+        position:sticky;
+    }
+
+    header.sticky{
+        color:lightgrey;
+    }
+
+    /*----------------Styling Home--------------------*/
+
+    .home{
+        width:100%;
+        height:100vh;
+        position:relative; 
+        background-image: url("car.jpg");
+        background-repeat:no-repeat;
+        background-position:center right;
+        background-size:cover;
+        display:grid;
+        align-items: center;
+        grid-template-columns:repeat(2,1fr); 
+    }
+
+    .text h1{
+        font-size:3.5rem;
+        color:lightgreen;
+        letter-spacing:2px;
+    }
+
+    .text span{
+        color:var(--main-color);
+    }
+
+    .text p{
+        font-size:1.5rem;
+        margin:00.5rem 0 1rem;
+        color:lightgreen;
+    }
+
+    .form-container form{
+        display: flex;
+        flex-wrap:wrap;
+        align-items: center;
+        gap:1rem;
+        position:absolute;
+        bottom:5rem;
+        left:100px;
+        background:lightgrey;
+        padding:20px;
+        border-radius:0.5rem;
+    }
+
+    .input-box{
+        flex:1 1 7rem;
+        display: flex;
+        flex-direction:column;
+    }
+
+    .input-box span{
+        font-weight:500;
+    }
+
+    .input-box input{
+        padding:7px;
+        outline:none;
+        border:none;
+        background:#fff;
+        border-radius:0.5rem;
+        font-size:1rem;
+    }
+
+    .form-container form .btn{
+        flex:1 1 7rem;
+        padding:10px 34px;
+        border:none;
+        border-radius:0.5rem;
+        background:#474fa0;
+        color:#fff;
+        font-size:1rem;
+        font-weight:500;
+    }
+
+    .form-container form .btn:hover{
+        background:var(--main-color);
+    }
+
+    .divider{
+        border:0;
+        height:1px;
+        background:crimson;
+        border:none;
+        margin:0 110px 0 110px;
+    }
+
+    /*---------------------riding-----------------------*/
+
+    .heading{
+        text-align: center;
+    }
+    
+    .heading span{
+        font-weight:500;
+        text-transform:uppercase;
+    }
+
+    .heading h1{
+        font-size:2rem;
+    }
+
+    .ride-container{
+        display:grid;
+        align-items: center;
+        grid-template-columns:repeat(auto-fit,minmax(250px,auto));
+        gap:1rem;
+        margin-top:2rem;
+    }
+
+    .ride-container{
+        text-align: center;
+        padding:20px;
+    }
+
+    .ride-container .box .bx{
+        font-size:34px;
+        padding:10px;
+        background:#fff;
+        border-radius:0.5rem;
+        color:var(--main-color);
+    }
+
+    .ride-container .box h2{
+        font-size:1.3rem;
+        font-weight:500;
+        margin:1.4rem 0 0.5rem;
+    }
+
+    .ride-container .box .bx:hover,
+    .ride-container .box .bxs-calendar-check{
+        background:var(--gradient);
+        color:#fff;
+    }
+
+    .services-container{
+        display: grid;
+        grid-template-columns:repeat(auto-fit,minmax(300px,auto));
+        gap:1rem;
+        margin-top:2rem;
+    }
+
+    .services-container .box{
+        padding:10px;
+        border-radius:1rem;
+        box-shadow:1px 4px 41px rgba(0, 0, 0, 0.1);
+    }
+
+    .services-container .box .box-img img{
+        width:100%;
+        height:100%;
+        border-radius:1rem;
+        object-fit:cover;
+        object-position:center;
+    }
+
+    .services-container .box p{
+        padding:0 5px;
+        border:1px solid var(--text-color);
+        width: 50px;
+        border-radius:0.5rem;
+        margin:1rem 0 1rem;
+    }
+
+    .services-container .box h3{
+        font-weight:500;
+    }
+
+    .services-container .box h2{
+        font-size:1.1rem;
+        font-weight:600;
+        color:var(--main-color);
+        margin:0.2rem 0 0.5rem;
+    }
+
+    .services-container .box .card:hover{
+        box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .services-container .box h1 span{
+        font-weight:0.8rem;
+        font-weight:500;
+        color:var(--text-color);
+    }
+
+    .services-container .box .btn{
+        display: flex;
+        justify-content: center;
+        background:#474fa0;
+        color:#fff;
+        padding:10px;
+        border-radius:0.5rem;
+        transition:all 0.3s ease;
+    }
+    
+    .services-container .box .btn:hover{
+        background:var(--main-color);
+    }
+
+    /*-----------------------About Section--------------------------------*/
+
+    .about-container{
+        display: grid;
+        grid-template-columns:repeat(2,1fr);
+        margin-top:2rem;
+        align-items: center;
+        gap:1rem;
+        margin-top:1rem;
+    }
+
+    .about-img img{
+        width:100%;
+    }
+
+    .about-text span{
+        font-weight:500;
+        color:var(--main-color);
+        text-transform:uppercase;
+    }
+
+    .about-text p{
+        margin:0.5rem 0 1.4rem;
+    }
+
+    .about-text .btn{
+        padding:10px 20px;
+        background:#474fa0;
+        color:white;
+        border-radius:0.5rem;
+        transition:0.3s ease;
+    }
+
+    .about-text .btn:hover{
+        background:var(--main-color);
+    }
+
+    /*-------------------------------Review Container--------------------------------------*/
+
+    .reviews-container{
+        display: grid;
+        grid-template-columns:repeat(auto-fit, minmax(250px, auto));
+        gap:1rem;
+        margin-top:2rem;
+    }
+
+    .rev-img{
+        width:70px;
+        height:80px;
+    }
+
+    .rev-img img{
+        width:100%;
+        height:100%;
+        border-radius:50%;
+        object-fit:cover;
+        object-position:center;
+        border:2px solid var(--second-color);
+    }
+
+    .reviews-container .box{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        text-align: center;
+        padding:20px;
+        box-shadow:1px 4px 41px rgba(0, 0, 0, 0.1);.reviews-container .box h2
+        border-radius: 0.5rem;
+    }
+
+    .reviews-container .box h2{
+        font-size:1.1rem;
+        font-weight:600;
+        margin:0.5rem 0 0.5rem;
+    }
+
+    .reviews-container .box p{
+        font-style:italic;
+    }
+
+    .reviews-container .box .stars .bx{
+        color:var(--main-color);
+    }
+
+    /*------------------------footer--------------------------*/
+
+    .copyright{
+        height:70px;
+        background:lightgrey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .copyright a{
+        color:crimson;
+    }
+
+    .copyright a:hover{
+        text-decoration:underline;
+    }
+
+    /*-----------------------Making Responsive--------------------*/
+
+    @media (max-width:1184px){
+        .form-container form{
+            bottom:9rem;
+            left:20px;
+        }
+    }
+    @media (max-width:1084px){
+        header{
+            padding:18px 40px;
+        }
+        section{
+            padding:50px 40px;
+        }
+        .form-container form{
+            bottom:9rem;
+            left:30px;
+        }
+    }
+
+    @media (max-width:949px){
+        .home{
+            background-position:left;
+        }
+        .text h1{
+            font-size:2.5rem;
+        }
+        .form-container form{
+            bottom:11rem;
+            left:20px;
+        }
+    }
+
+    @media (max-width:924px){
+        header{
+            padding:11px 40px;
+        }
+        #menu-icon{
+            display:initial;
+            margin:0 0 0 60px;
+        }
+        .sign-up{
+            display:none;
+        }
+        .form-container form{
+            bottom:14rem;
+            left:8px;
+        }
+        .text h1{
+            font-size:2.5rem;
+        }
+        .home{
+            grid-template-columns:1fr;
+        }
+        .form-container form{
+            position:unset;
+        }
+        header .navbar{
+            position:absolute;
+            top:-500px;
+            left:0;
+            right:0;
+            display: flex;
+            flex-direction:column;
+            background: whitesmoke;
+            box-shadow:0 4px 4px rgba(0, 0, 0, 0.1);
+            transition:0.2s ease;
+            text-align: left;
+        }
+        .navbar.active{
+            top:8%;
+        }
+        .navbar a{
+            padding:1rem;
+            border-left:2px solid var(--main-color);
+            margin:1rem;
+            display: block;
+        }
+        .navbar a:hover{
+            color:#fff;
+            background:var(--main-color);
+            border:none;
+        }
+        .navbar a::after{
+            display:none;
+        }
+        .heading span{
+            font-size:0.9rem;
+            font-weight:600
+        }
+        .heading h1{
+            font-size:1.3rem;
+        }
+        .about-container{
+            grid-template-columns:1fr;
+            text-align: center;
+        }
+        .about-img{
+            padding:1rem;
+            order:2;
+        }
+    }
+
+    @media (max-width:612px){
+        .home {
+        display: flex;
+        background: url("bike.jpg") no-repeat center;
+        }
+        .copyright{
+            flex-direction:column;
+        }
+        .logo{
+            width:40px;
+        }
+        section{
+            padding:50px 14px;
+        }
+        .header-btn .sign-in{
+            padding:7px 10px;
+            font-size:14px;
+            font-weight:400;
+        }
+        .text h1{
+            font-size:2rem;
+        }
+        .form-container{
+            padding-top:2rem;
+        }
+        .services-container{
+            grid-template-columns:repeat(auto-fit,minmax(254px, auto));
+        }
+    }
+
+    header {
+        z-index: 9999;
+        position: fixed;
+    }
+    
+ </style>
+
+
+</head>
+<body>
+    <div id="main">
+
+<!------------------Header Portion------------------->
+<div class="scroll-up-btn">
+        <a href="#"><i style="color:#fff;" class="fas fa-angle-up"></i></a>
+    </div>
+     <header>
+
+        <div class="logo"><a href="#">MY<span>Savari.</span></a></div>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#">Home</a></li>
+            <li><a href="#ride">Ride</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+
+        <div class="header-btn">
+            <a href="#" class="sign-up">Sign Up</a>
+            <a href="#" class="sign-in">Sign In</a>
+        </div>
+     </header>
+
+     <!-------------------Home-------------->
+
+     <section class="home" id="home">
+        <div class="text">
+            <h1>Are You Looking for <br><span class="typing"></span></h1>
+            <p><b>like <span class="typing-2"></span> .</b></p>
+            <div class="header-btn">
+            <a href="#" class="sign-in">Contact Us.</a>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form action="">
+                <div class="input-box">
+                    <span>Location</span>
+                    <input type="search" name="" id="" placeholder=""Search Places..>
+                </div>
+                <div class="input-box">
+                    <span>Pick-Up-Date</span>
+                    <input type="date" name="" id="">
+                </div>
+                <div class="input-box">
+                    <span>Return Date</span>
+                    <input type="date" name="" id="">
+                </div>
+
+                <input type="submit" name="" id="" class="btn">
+            </form>
+        </div>
+     </section>
+
+     <!----Ride------------->
+
+     <section class="ride" id="ride">
+        <div class="heading">
+            <span>How it Works</span>
+            <h1>Rent with 3 easy steps</h1>
+        </div>
+        <div class="ride-container">
+            <div class="box">
+                <i class='bx bxs-map'></i>
+                <h2>Choose a Loaction</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime natus earum quas atque, dolores eveniet cupiditate aut, unde explicabo praesentium at voluptatum harum facere voluptas eligendi corrupti fugit!</p>
+            </div>
+
+            <div class="box">
+                <i class='bx bxs-calendar-check'></i>
+                <h2>Pick-Up Date</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime natus earum quas atque, dolores eveniet cupiditate aut, unde explicabo praesentium at voluptatum harum facere voluptas eligendi corrupti fugit!</p>
+            </div>
+
+            <div class="box">
+            <i class='bx bxs-calendar-star'></i>
+                <h2>Book Now</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime natus earum quas atque, dolores eveniet cupiditate aut, unde explicabo praesentium at voluptatum harum facere voluptas eligendi corrupti fugit!</p>
+            </div>
+        </div>
+     </section>
+
+     <!-----------------------Services-------------------------------------->
+     <hr class="divider">
+
+     <section class="services" id="services">
+        <div class="heading">
+            <span>We provide you the best Services </span>
+            <h1>Explore out Top Deals <br> From Top rated Dealers</h1>
+            <h1># Cars</h1>
+        </div>
+        <div class="services-container">
+            <div class="box">
+                <div class="box-img">
+                    <img src="s1.jpg" alt="">
+                </div>
+                <p>2021</p>
+                <h3>Mahindra Scorpio</h3>
+                <h2>INR 5000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="s2.jpg" alt="">
+                </div>
+                <p>2022</p>
+                <h3>Tata Harrier</h3>
+                <h2>INR 7500 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="s1.jpg" alt="">
+                </div>
+                <p>2023</p>
+                <h3>Toyota Fortuner</h3>
+                <h2>INR 9000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="s1.jpg" alt="">
+                </div>
+                <p>2021</p>
+                <h3>Mahindra Scorpio</h3>
+                <h2>INR 5000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="s2.jpg" alt="">
+                </div>
+                <p>2022</p>
+                <h3>Tata Harrier</h3>
+                <h2>INR 7500 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="s1.jpg" alt="">
+                </div>
+                <p>2023</p>
+                <h3>Toyota Fortuner</h3>
+                <h2>INR 9000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="s1.jpg" alt="">
+                </div>
+                <p>2023</p>
+                <h3>Toyota Fortuner</h3>
+                <h2>INR 9000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="s1.jpg" alt="">
+                </div>
+                <p>2021</p>
+                <h3>Mahindra Scorpio</h3>
+                <h2>INR 5000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+        </div>
+        <div class="heading">
+            <br><h1># Bikes</h1>
+    </div>
+
+    <div class="services-container">
+            <div class="box">
+                <div class="box-img">
+                    <img src="bike.jpg" alt="">
+                </div>
+                <p>2022</p>
+                <h3>Pulsar 150</h3>
+                <h2>INR 2500 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="bike3.jpg" alt="">
+                </div>
+                <p>2019</p>
+                <h3>Apache</h3>
+                <h2>INR 2000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="bike2.jpg" alt="">
+                </div>
+                <p>2023</p>
+                <h3>Royal Enfield Classic 350</h3>
+                <h2>INR 4500 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="bike4.jpg" alt="">
+                </div>
+                <p>2023</p>
+                <h3>Dominar</h3>
+                <h2>INR 5000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            </div>
+        <div class="heading">
+            <br><h1># Pick-Up</h1>
+    </div>
+
+    <div class="services-container">
+            <div class="box">
+                <div class="box-img">
+                    <img width="0" src="pickup3.jpg" alt="">
+                </div>
+                <p>2019</p>
+                <h3>Ford Pick-Up</h3>
+                <h2>INR 3500 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="pickup2.jpg" alt="">
+                </div>
+                <p>2017</p>
+                <h3>Bolero Pick-Up</h3>
+                <h2>INR 2500 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="pickup.jpg" alt="">
+                </div>
+                <p>2014</p>
+                <h3>Maximo</h3>
+                <h2>INR 1500 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="pickup4.jpg" alt="">
+                </div>
+                <p>2010</p>
+                <h3>TATA Truck</h3>
+                <h2>INR 2000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div></div>
+
+            <div class="heading">
+            <br><h1># E-Rikshaws</h1>
+    </div>
+
+    <div class="services-container">
+            <div class="box">
+                <div class="box-img">
+                    <img width="0" src="r1.jpg" alt="">
+                </div>
+                <p>2016</p>
+                <h3>Tesla Rikshaw</h3>
+                <h2>INR 10 <span>/ KM</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="r2.jpg" alt="">
+                </div>
+                <p>2015</p>
+                <h3>Plaggio Ape Tampu</h3>
+                <h2>INR 12 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="r3.jpg" alt="">
+                </div>
+                <p>2014</p>
+                <h3>Non - AC Bus</h3>
+                <h2>INR 8000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="r4.jpg" alt="">
+                </div>
+                <p>2019</p>
+                <h3>AC Bus</h3>
+                <h2>INR 17000 <span>/ Day</span></h2>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+
+
+        
+     </section>
+
+     <hr class="divider">
+
+     <!----------------------------About-------------------------------------->
+    
+     <section class="about" id="about">
+        <div class="heading">
+            <span>About Us</span>
+            <h1>We're having the best customers Experience.</h1>
+        </div>
+        <div class="about-container">
+            <div class="about-img">
+            <img src="car1.jpg" alt="">
+            </div>
+        <div class="about-text">
+            <span>About Us</span>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, expedita omnis tenetur ea, vero commodi temporibus iure sint dicta minus quia quo libero illum corrupti.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, in!</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+        </div>
+     </section>
+
+     <hr class="divider">
+
+     <!--------------------Reviews----------------------------->
+     <br><br>
+     <section class="reviews" id="reviews">
+        <div class="heading">
+            <span>Our Reviews</span>
+            <h1>What's our Customers say.</h1>
+        </div>
+        <div class="reviews-container">
+            <div class="box">
+                <div class="rev-img">
+                    <img src="" alt="">
+                </div>
+                <h2>Raju Kumar</h2>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut provident eligendi distinctio tenetur explicabo, voluptatem laudantium enim et ipsa culpa illum nemo excepturi, numquam amet.</p>
+            </div>
+
+            <div class="box">
+                <div class="rev-img">
+                    <img src="" alt="">
+                </div>
+                <h2>Abhik Sharma</h2>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis veniam nihil repellendus ratione itaque voluptatibus. Quia fugit amet fuga vero autem, magni quisquam.</p>
+            </div>
+
+            <div class="box">
+                <div class="rev-img">
+                    <img src="" alt="">
+                </div>
+                <h2>Rakesh Kumar</h2>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ad minima consequatur voluptas veniam eos. Illo numquam vero et amet nesciunt facilis perspiciatis ad eligendi?
+            </div>
+        
+        </div>
+     </section>
+
+     <div class="copyright">
+         <p>Created By <a href="">Rahul@0805</a> | &copy; 2023 All rights reserved.</p>
+        <div class="social">
+            <a href="#"><i class='bx bx1-facebook'></i></a>
+            <a href="#"><i class='bx bx1-twitter'></i></a>
+            <a href="#"><i class='bx bx1-instagram'></i></a>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+    
+    let menu = document.querySelector('#menu-icon');
+    let navbar = document.querySelector('.navbar');
+
+
+
+    menu.onclick = () => {
+        menu.classList.toggle('bx-x');
+        navbar.classList.toggle('active');
+    }
+
+    window.onscroll = () => {
+        menu.classList.remove('bx-x');
+        navbar.classList.remove('active');
+    }
+
+    //------Scroll Reveal---------------------------->
+
+    const sr = ScrollReveal ({
+        distance: '60px',
+        duration: 2500,
+        delay: 400,
+        reset: true
+    })
+
+    sr.reveal('.text',{delay: 200, origin: 'top'})
+    sr.reveal('.form-container form',{delay: 500, origin: 'left'})
+    sr.reveal('.heading',{delay: 500, origin: 'top'})
+    sr.reveal('.ride-container .box',{delay: 600, origin: 'top'})
+    sr.reveal('.services-container .box',{delay: 500, origin: 'top'})
+    sr.reveal('.about-container .box',{delay: 500, origin: 'top'})
+    sr.reveal('.reviews-container',{delay: 400, origin: 'top'})
+    sr.reveal('.copyright',{delay: 200, origin: 'bottom'})
+
+    // typing text animation script
+    var typed = new Typed(".typing", {
+                strings: ["Rent Your Vehicle","Book a Vehicle"],
+                typeSpeed: 100,
+                backSpeed: 60,
+                loop: true
+            });
+
+            var typed = new Typed(".typing-2", {
+                strings: ["Car","Bike","E-Rikshaw","Pick-Up"],
+                typeSpeed: 100,
+                backSpeed: 60,
+                loop: true
+            });
+
+</script>
+
+</body>
+</html>
